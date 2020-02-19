@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : NetworkBehaviour
 {
     public CharacterController controller;
 
@@ -23,6 +24,9 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!isLocalPlayer) {
+        return;
+        }
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
 
